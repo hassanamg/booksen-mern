@@ -1,0 +1,124 @@
+
+.container__bg {
+
+   
+    background: url(../assets/bg.png);
+  
+    width: 100%;
+   
+}
+.innerContainer {
+    width: 80%;
+    margin: 0 auto;
+}
+h1 {
+
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    color: #FFE4C4;
+}
+.dropdowns {
+
+    display: flex;
+    justify-content: center;
+    
+}
+#dropdowns {
+    background-color: red !important;
+}
+.dropdown {
+
+    margin-bottom: 2em;
+    padding: 5px;
+}
+figure img  {
+
+    width: 150px;
+    height: 200px;
+    transition: 0.3s ease;
+}
+
+figure img:hover {
+
+    opacity: 0.5;
+
+}
+
+figcaption {
+
+    color: #FFE4C4;
+    font-size: 14px;
+    font-weight: 400;
+   
+    font-family: 'NeueMachina-Light';
+}
+figcaption.payment__case {
+
+    background: transparent;
+    border: 1px solid #fff;
+    width: 40%;
+    color: #fff;
+
+}
+.book__author {
+
+   font-size: 12px;
+}
+.book__author span {
+
+    margin-left: 6px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.avatar {
+
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+.checked {
+
+    color: orange;
+}
+
+figcaption {
+
+    color: #FFE4C4;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 5px;
+    font-family: 'NeueMachina-Light';
+    
+}
+figcaption.payment__case {
+
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    text-align: center;
+    
+    
+
+}
+button.view__more-link {
+
+     margin: 10px auto;
+     position: absolute;
+     text-align: center;
+     border: 1px solid #8b7364;
+     padding: 5px;
+     border-radius: 5px;
+     
+     background: none;
+     color: #8b7364;
+         font-family: 'NeueMachina-Light';
+
+  
+ }
+
+figure img:hover a.view__more-link {
+
+opacity: 1;
+}

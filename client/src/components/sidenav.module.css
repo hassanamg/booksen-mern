@@ -1,0 +1,80 @@
+.sidenave__customize {
+
+    height: 100%; /* 100% Full-height */
+    width: 20%; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #32190f;
+    overflow: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+   
+}
+
+.sidenav {
+    width: 250px;
+    transition: width 0.3s ease-in-out;
+    height: 100vh;
+    background-color: rgb(10,25,41);
+    padding-top: 28px;
+}
+ 
+.sidenavClosed {
+    composes: sidenave__customize;
+    transition: width 0.3s ease-in-out;
+    width: 60px
+}
+ 
+.sideitem {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #f6dabc;
+    text-decoration: none;
+}
+.linkText {
+    text-decoration: none;
+    
+  }
+
+  .sidenav a.menuLinks {
+
+    width: 300px;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  a:hover {
+    color: #8b7364;
+  }
+.linkText {
+    padding-left: 16px;
+}
+ 
+.linkTextClosed {
+    composes: linkText;
+    visibility: hidden;
+}
+ 
+.sideitem:hover {
+    background-color: #244f7d1c;
+}
+ 
+.menuBtn {
+    align-self: center;
+    align-self: flex-start;  
+    justify-self: flex-end;
+    color: #B2BAC2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 20px;
+}
+.navLogo img {
+
+    width: 100%;
+    height: 50%;
+    display: block;
+    margin:1rem auto;
+}

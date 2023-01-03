@@ -1,0 +1,85 @@
+const Books = (props, {children, onClick}) => {
+
+  const [openModal, setModal] = useState(false);
+  const [tempData, setTempData] = useState([])
+
+  const getSingleData = (imageCover,date, title, isbn, category, description, author, authorImg) => {
+  
+    let tempData= [imageCover,date, title,isbn, category, description, author, authorImg]
+    console.warn(tempData)
+    setTempData(item => [1, ...tempData]) 
+    return setModal(true)
+  }
+  
+   
+    return <div className={styles.container}>
+         <Container>
+            <Row>
+              <h1>All Available books</h1>
+              <Container>
+               <DropdownButton variant='success' className={styles.dropdowns} id="dropdown-basic-button dropdowns" title="Dropdown button">
+                <Dropdown.Item  href="#/action-1">A - Z alphabatically</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Z - A alphabatically</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Most reviewed</Dropdown.Item>
+              </DropdownButton>
+              </Container>
+            </Row>
+            {
+          
+               openModal? <Popup 
+             imageCover={tempData[1]} 
+               date={tempData[2]} 
+               title={tempData[3]} 
+                isbn={tempData[4]}  
+             category={tempData[5]}       
+             description={tempData[6]}
+              authorImg={tempData[8]}
+            close={() => setModal(false)} /> : ''
+            }
+            <Row style={{height: "1100px", marginTop: '30px' }}>
+              
+            {
+              
+
+                 props.books?.map((book, i) => {
+
+                   
+             return <Col md={3} key={i}>
+                
+                <figure>
+             
+                 
+                  <img src={`./../images/${book.imageCover}`} alt={`${book.slug}`} />
+                  <figcaption className={styles['book__title']}>{book.title}</figcaption>
+                  <figcaption className={styles['book__author']}>by<span>{book.authors[0].authorName}</span></figcaption>
+                  <figcaption className={styles['payment__case']}>Free</figcaption>
+                   <motion.button
+                     whileHover={{ scale: 1.1 }}
+                     whileTap={{ scale: 0.9 }}
+                     className={styles['view__more-link']}
+                     onClick={() => getSingleData(book.imageCover,book.publishedDate, book.title, book.isbn, book.categories, book.longDescription, book.authors[0].authorName, book.authors[0].authorImg) }
+                   > 
+                        View more
+                   </motion.button>
+                 
+                 
+               </figure>
+               
+              </Col>
+               
+            
+              
+           })
+          }
+     
+      
+            </Row>
+         </Container>
+        
+      </div>
+
+        }
+      
+            
+
+export default Books

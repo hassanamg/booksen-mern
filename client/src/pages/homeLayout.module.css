@@ -1,0 +1,56 @@
+
+@font-face {
+    font-family: 'NeueMachina-Light';
+    src: url("../../public/NeueMachina-Light.otf");
+}
+h1, h2, h3, h4, h5, input {
+
+    font-family: 'NeueMachina-Light';
+}
+.toggleBar {
+
+    display: block;
+    float: left;
+}
+div.bg__img-trnsp {
+
+    background-image: url('../assets/home_bg.png');
+    background-size: cover;
+    height: 100vh;
+   
+}
+.rightContent {
+
+width: auto;
+float: right;
+position: absolute;
+left: 40%;
+top: 40%;
+
+}
+.rightContent h2 {
+
+   font-size: 3em;
+   text-transform: uppercase;
+   color: #fff;
+   letter-spacing: 5px;
+    margin-bottom: 23px;
+  
+}
+
+.rightContent h2 span {
+
+    background-color: rgb(246 218 188);
+    color:#32190F;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-family: H;
+}
+.rightContent h5 {
+
+    color: #ffffff7a;
+   line-height: 12px;
+   margin-top: 2.5rem;
+   margin-bottom: 23px;
+   font-size: 15px;
+}
