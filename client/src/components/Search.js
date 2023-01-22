@@ -26,10 +26,11 @@ const Search = (props) => {
        
        window.setTimeout(() => {
           navigate(`/search?q=${input}`)
-       }, 1500)
+       }, 100)
        
     }
-    console.log(data)
+    //console.log(data.items.volumeInfo)
+ 
     return (
    
            <div className={styles['search__input']}>

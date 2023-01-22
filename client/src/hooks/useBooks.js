@@ -1,6 +1,6 @@
 import { fabClasses } from "@mui/material"
 import { useCallback, useEffect, useState } from "react"
-import {httpGetBooks} from "./requests"
+// import {httpGetBooks} from "./requests"
 
 
 function useBooks() {
@@ -14,7 +14,7 @@ function useBooks() {
         if(fetchedBooks)  setIsLoaded(true)
         console.log(isLoaded)
         saveBooks(fetchedBooks)
-        
+        console.log(books) 
     },[])
     useEffect(() => {
       getBooks();

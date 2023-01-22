@@ -7,6 +7,9 @@
     width: 100%;
    
 }
+.row { 
+    text-align: center;
+}
 .innerContainer {
     width: 80%;
     margin: 0 auto;
@@ -98,14 +101,13 @@ figcaption.payment__case {
     border: 1px solid #fff;
     color: #fff;
     text-align: center;
-    
+    margin: 0 auto;
     
 
 }
 button.view__more-link {
 
      margin: 10px auto;
-     position: absolute;
      text-align: center;
      border: 1px solid #8b7364;
      padding: 5px;

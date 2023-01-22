@@ -1,0 +1,64 @@
+.get__started--slide h3 {
+  
+    width: 80%;
+    font-size: 1em;
+    color: #32190f;
+    font-family: 'NeueMachina-Light';
+    
+  }
+  .get__started--slide p {
+  
+    color: #777;
+    font-family: 'NeueMachina-Light';
+    margin-bottom: 20px;
+    font-size: 0.8em;
+  }
+  .get__started--slide a , .button--submit{
+  
+    
+      background-color: #fff;
+      border:1px solid #32190f;
+      padding: 10px;
+      color: #000;
+      margin-top: 15px;
+      text-decoration: none;
+     font-family: 'NeueMachina-Light';
+     transition: .5 ease-in all;
+     border-radius: 10px;
+  }
+  .get__started--slide a:hover , .button--submit:hover{
+  
+    color: #fff;
+    background-color: #32190F;
+    border: #32190f;
+  }
+   .h2__highlighted {
+  background-color: rgb(246 218 188);
+    color: #32190F;
+    padding: 15px;
+    margin-bottom: 10px;
+  } 
+  .form__register--slide {
+
+    margin-top: 5em;
+  }
+  .form__register--slide h3 {
+
+    font-size: 1em;
+  }
+  .register--form__groupe{
+
+    margin-bottom: 0.5em;
+  }
+
+ .register--form__groupe svg {
+
+   position: absolute;
+   margin-top: 5px;
+   
+  }
+   .input::placeholder {
+    padding-left: 1em;
+    font-size: 12px;
+
+  }

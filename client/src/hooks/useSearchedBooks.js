@@ -10,7 +10,10 @@ function useSearchedBooks(query) {
     
     const fetchedBooks = await httpGetSearchedBooks(query)
     
-        saveBooks(fetchedBooks)
+        saveBooks(fetchedBooks.items)
+        // fetchedBooks.items.map((info)=> {
+        //   console.log(info.accessInfo)
+        // })
 
     },[])
     useEffect(() => {
