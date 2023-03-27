@@ -6,10 +6,7 @@ import useBooks from '../hooks/useBooks';
 import { useState } from 'react';
 const Pagination = (props) => {
    
-  
 
-   
-   
         const pageNumbers = []
         for(let i = 1; i <= Math.ceil(props.totalPosts / props.postsPerPage); i++ ) {
 
@@ -30,9 +27,6 @@ const Pagination = (props) => {
                     </li> : ''
 
                   } 
-
-               
-                { console.log(pageNumbers.length)}
 
                 
                 { 

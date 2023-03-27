@@ -9,6 +9,7 @@ import styles from './books.module.css'
 import {motion, AnimatePresence} from 'framer-motion'
 import { useMemo, useState, useEffect } from 'react';
 import Modal from '../components/modal';
+import BookViewer from '../components/Viewer';
 import Pagination from '../components/pagination';
 // import httpGetAllBooks from '../hooks/fetchData';
 // import useBooks from '../hooks/fetchData';
@@ -19,26 +20,26 @@ import LoadingSpinner from '../components/LoadingSpinner';
  import { useLocation } from 'react-router-dom';
 // import Error from '../components/
 //import Search from "../components/Search"
-
+import Viewer from '../components/Viewer';
 const Search = () => {
    
+
     const search = useLocation().search
     const query = new URLSearchParams(search).get('q')
-   console.log(query)
-   var fetchedBooks = useSearchedBooks(query).data
-   console.log(fetchedBooks)
   
-    const [modalOpen, setModalOpen] = useState(false)
+  
+  const [modalOpen, setModalOpen] = useState(false)
   const [tempData, setTempData] = useState([])
   
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(10)
+  const [postsPerPage, setPostsPerPage] = useState(20)
   const close = () => setModalOpen(false)
   const open = () => setModalOpen(true)
    
 //   var books = useBooks().data
 
-
+     var fetchedBooks = useSearchedBooks(query)
+   
    var allBooks = 0
    const indexOfLastPost = currentPage * postsPerPage
    const indexOfFirstPost = indexOfLastPost - postsPerPage
@@ -47,21 +48,20 @@ const Search = () => {
   const prevPage = () => setCurrentPage(currentPage - 1)
   const nextPage = () => setCurrentPage(currentPage + 1)
     const [isLoaded, setIsLoaded] = useState(false)
-
   if(fetchedBooks){
    allBooks = fetchedBooks.length
-   console.log(allBooks)
   fetchedBooks = fetchedBooks.slice(indexOfFirstPost, indexOfLastPost)
   
   }
+
+  const getSingleData = (imageCover,date, title, isbn, category, description, author, authorImg, preview) => {
   
-  const getSingleData = (imageCover,date, title, isbn, category, description, author, authorImg) => {
-  
-    let tempData= [imageCover,date, title,isbn, category, description, author, authorImg]
-    console.warn(tempData)
+    let tempData= [imageCover,date, title,isbn, category, description, author, authorImg, preview]
     setTempData(item => [1, ...tempData]) 
     
   }
+      
+
     return <div className={styles.container__bg}>
          <div className={styles['innerContainer']}>
             <Row>
@@ -107,49 +107,51 @@ const Search = () => {
                     isbn={tempData[4]}  
                     category={tempData[5]}       
                     description={tempData[6]}
-                    authorImg={tempData[8]}
+                    preview={tempData[8]}
                />
                 }
+                
                </AnimatePresence>
               
 
-            <Row style={{height: "50em", marginTop: '30px' }}>
+            <Row style={{ marginTop: '30px', textAlign:"center" }}>
              
             {
               
              
                  fetchedBooks?.map((book, i) => {
-
+                 if(book.accessInfo.embeddable === true ) {
+                   let thumbnail = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail
+                   let title = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail
+                   let preview = book.volumeInfo.previewLink
+                   if(thumbnail != undefined && title != undefined && preview != undefined) {
+                   return <Col md={3} key={i}>
+                  
+                      <figure>
+                  
+                    
+                        <img src={thumbnail? thumbnail : ''} alt={`${book.volumeInfo.title}`} />
+                        <figcaption className={styles['book__title']}>{book.volumeInfo.title}</figcaption>
                    
-              return <Col md={3} key={i}>
-                  
-                  <figure>
-              
-                  
-                    <img src={`./../images/${book.imageCover}`} alt={`${book.slug}`} />
-                    <figcaption className={styles['book__title']}>{book.title}</figcaption>
-                    <figcaption className={styles['book__author']}>by<span>{book.authors[0].authorName}</span></figcaption>
-                    <figcaption className={styles['payment__case']}>Free</figcaption>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className={styles['view__more-link']}
-                      onClick={() => (modalOpen ? close() : open(), getSingleData(book.imageCover,book.publishedDate, book.title, book.isbn, book.categories, book.longDescription, book.authors[0].authorName, book.authors[0].authorImg) )}
-                    > 
-                          View more
-                    </motion.button>
-                  
-                  
-                </figure>
-                
+                        <figcaption className={styles['book__author']}>by<span>{book.volumeInfo.authors.length > 1 ? book.volumeInfo.authors.map((author, i) => i == 0? author : ` and ${author}`)  : book.volumeInfo.authors} </span></figcaption>
+                        {/* <figcaption className={styles['payment__case']}>Free</figcaption> */}
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className={styles['view__more-link']}
+                          onClick={() => (modalOpen ? close() : open(), getSingleData(thumbnail,book.volumeInfo.publishedDate, book.volumeInfo.title, book.volumeInfo.industryIdentifiers.map((industry) => industry.type.includes("ISBN") ? industry.identifier : ""), book.volumeInfo.categories, book.volumeInfo.description, book.volumeInfo.authors, preview) )}
+                        > 
+                              View more
+                        </motion.button>
+                    </figure>
                 </Col>
                 
-              
-              
+              }
+                   }
            })
          
           }
-     
+            
             </Row>
            <Pagination 
            postsPerPage={postsPerPage} 
@@ -158,7 +160,7 @@ const Search = () => {
            prevPage={prevPage} 
            nextPage={nextPage}
            isFirst={currentPage === 1 ? false : true}
-           isLast={currentPage ===Math.ceil(fetchedBooks / postsPerPage)  ? false : true}
+           isLast={currentPage === Math.ceil(allBooks / postsPerPage) ? false : true}
            />
          </div>
         
@@ -166,7 +168,7 @@ const Search = () => {
      
       
    
-  
+  return console.log(tempData)
    
 }
 export default Search
