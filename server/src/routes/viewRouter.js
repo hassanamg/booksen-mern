@@ -5,8 +5,8 @@ const express = require('express')
 const router = express.Router()
 
 
-router.get('/', isLoggedIn,getHomePage)
-router.get('/books',isLoggedIn,  getBooks)
+// router.get('/', isLoggedIn,getHomePage)
+// router.get('/books',isLoggedIn,  getBooks)
 router.get('/me', isLoggedIn,getAccount)
 router.get('/wishlist', isLoggedIn,getWishlist)
 router.get('/search', getBooks)

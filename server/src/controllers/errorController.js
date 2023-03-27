@@ -1,6 +1,6 @@
 const { original } = require('parseurl')
 const { message } = require('statuses')
-const AppError = require('./../utils/appError')
+//const AppError = require('./../utils/appError')
 
 
 
@@ -24,7 +24,7 @@ const handleJWTExpiredError = () => new AppError('Your token has expired, Please
 const sendErrorDev = (err, req, res) => {
 
     // A - For API
-    if(req.originalUrl.startsWith('/api')) {
+    if(req.originalUrl.startsWith('/')) {
 
         return res.status(err.statusCode).json({
 
@@ -80,20 +80,13 @@ module.exports = (err, req, res , next) => {
         sendErrorDev(err, req,res)
     
     }
-    if(process.env.NODE_ENV === 'production') {
+    //if(process.env.NODE_ENV === 'production') {
 
-      let error = { ...err };
-    error.message = err.message;
-   
-    if (error.name === 'CastError') error = handleCastErrorDB(error);
-   // if (error.code === 11000) error = handleDuplicateFieldsDB(error);
-    //if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
-     
-    if (error.name === 'JsonWebTokenError') error = handleJWTError();
-    if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
-
-    sendErrorProd(error, req, res);
-
-
-    }
+  // let error = { ...err }
+    
+   // }
+   // error.message = err.message
+    //if(error.code === 11000) error = handleDuplicateFields(error)
+    //sendErrorDev(error, req, res)
+    // }
 }

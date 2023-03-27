@@ -1,0 +1,42 @@
+
+
+.overlay {
+    position: sticky;
+        top: 0;
+        left: 0;
+       height: 100%;
+        width: 100%;
+        background: #000000e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-y: hidden;
+    }
+    .formPopup {
+    
+        background-color: #fff;
+        width: 80%;
+        height: auto;
+        position: fixed;
+        top: 15%;
+        left: 10%;
+        margin: 0 auto;
+        border-radius: 4px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+        padding: 0.6em;
+    }
+    .formPopup.active {
+    
+        top: 8%;
+        visibility: visible;
+        opacity: 0.7;
+        transition: 0.5s;
+        overflow-y: hidden;
+    }
+    .close__popup {
+        background: none;
+    border: none;
+    font-size: 1em;
+    color: #000;
+    float: right;
+}

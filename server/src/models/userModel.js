@@ -71,6 +71,13 @@ const userSchema = mongoose.Schema({
         default: true,
         select:  false
     },
+    status: {
+
+        type: String,
+        enum: ['Pending', 'Active', 'Inactive'],
+        default: 'Pending',
+        select: false
+    },
     wishlist: [
         
         {

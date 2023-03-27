@@ -6,6 +6,7 @@ async function httpGetBooks() {
     
     const response = await fetch(`${API_URL}/books`)
     console.log(response.doc)
+     console.log(response.status)
     return await response.json()
     
 }

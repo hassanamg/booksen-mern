@@ -21,7 +21,7 @@ class APIFeatures {
         console.log(querySearch)
         if(querySearch) {
 
-            this.query = this.query.find({$or: [ {title: { $regex: `${querySearch}` } }, {isbn: { $regex: `${querySearch}` } },  {authors: { $regex: `${querySearch}` } },   ]})
+            this.query = this.query.find({$or: [ {title: { $regex: `${querySearch}` } }, {isbn: { $regex: `${querySearch}` } }   ]})
         }
         return this
     }

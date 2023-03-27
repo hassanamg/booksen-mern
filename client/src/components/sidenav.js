@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 import imgLogo from '../assets/logo.png'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-
+import { useAuthState } from '../Context/context';
  
 
 
 export default function SideNav(props) {
 
-
+    const userDetails = useAuthState()
 
     return ( 
     
@@ -26,12 +26,12 @@ export default function SideNav(props) {
           </div>
           {NavData.map(item => {
  
-                return <NavLink key={item.id} className={styles.sideitem} to={item.link}>
+                return item.isPrivate && !Boolean(userDetails.token)? '' : <NavLink key={item.id} className={styles.sideitem} to={item.link}>
                     {item.icon}
                     <span className={styles.linkText}>{item.text}</span>
                 </NavLink>
-                
-            })}
+               
+            }) }
         </div>
     
         /*<div className={classes.sidenav}>

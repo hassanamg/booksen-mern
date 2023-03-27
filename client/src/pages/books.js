@@ -21,7 +21,7 @@ const Books = (props, {children, handleClose }) => {
   const [tempData, setTempData] = useState([])
   
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(10)
+  const [postsPerPage, setPostsPerPage] = useState(12)
   const close = () => setModalOpen(false)
   const open = () => setModalOpen(true)
    
@@ -67,9 +67,9 @@ const Books = (props, {children, handleClose }) => {
                
               }
               {
-                !isLoaded? <LoadingSpinner /> : <> </>
+                //!isLoaded? <LoadingSpinner /> : <> </>
                 
-                  // !books? <LoadingSpinner /> : ''
+                 !books? <LoadingSpinner /> : ''
                 }
              
               {/* 
@@ -110,7 +110,7 @@ const Books = (props, {children, handleClose }) => {
                </AnimatePresence>
               
 
-            <Row style={{height: "50em", marginTop: '30px' }}>
+            <Row>
              
             {
               
@@ -118,15 +118,15 @@ const Books = (props, {children, handleClose }) => {
                  books?.map((book, i) => {
 
                    
-                   return <Col md={3} key={i}>
+                   return <Col md={3} xs={6} key={i}>
                   
                   <figure>
               
                   
                     <img src={`./../images/${book.imageCover}`} alt={`${book.slug}`} />
                     <figcaption className={styles['book__title']}>{book.title}</figcaption>
-                    <figcaption className={styles['book__author']}>by<span>{book.authors[0].authorName}</span></figcaption>
-                    <figcaption className={styles['payment__case']}>Free</figcaption>
+                    <figcaption className={styles['book__author']}>by<span>{book.authors.map(author => author.authorName)}</span></figcaption>
+                    
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}

@@ -43,7 +43,7 @@ const dropIn = {
             exit="exit"
           >
                      
-        <div className={styles['overlay']} onClick={handleClose}>
+        <div className={styles['overlay']} onClick={handleClose}></div>
             <div className={styles.popup} id="popup">
             <Container id='blur'>
                 <button onClick={props.handleClose} className={styles['close__popup']}>X</button>
@@ -78,7 +78,7 @@ const dropIn = {
                 </Row>
             </Container>
             </div>
-        </div>
+        
 
         </motion.div>
       

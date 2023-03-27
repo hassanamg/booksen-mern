@@ -16,19 +16,15 @@ export const NavData = [
         id: 1,
         icon: <BookIcon/>,
         text: "View all books",
-        link: "books"
+        link: "books",
+        isPrivate: false
     },
     {
         id: 0,
         icon: <AttributionIcon/>,
         text: "View all authors",
-        link: "authors"
-    },
-    {
-        id: 1,
-        icon: <SettingsIcon/>,
-        text: "Settings",
-        link: "settings"
+        link: "authors",
+         isPrivate: false
     }
 ]
 

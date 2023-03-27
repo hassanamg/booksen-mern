@@ -14,7 +14,7 @@ function useBooks() {
         if(fetchedBooks)  setIsLoaded(true)
         console.log(isLoaded)
         saveBooks(fetchedBooks)
-        
+        console.log(books) 
     },[])
     useEffect(() => {
       getBooks();

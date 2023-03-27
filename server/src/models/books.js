@@ -61,8 +61,8 @@ const booksSchema = mongoose.Schema(
 
       imageCover: {
  
-         type: String,
-         required: true
+         type: String
+        //  required: true
       },
 
       longDescription: {
@@ -79,11 +79,21 @@ const booksSchema = mongoose.Schema(
     
       authors: [
       
-        {
+          {
+              authorName: {
 
-            type: mongoose.Schema.ObjectId,
-            ref: 'Author'
-        }
+                 type: String,
+                 required: [true, 'Please choose a name for the author'],
+                 unique: true
+              },
+               authorImg: {
+
+                  type: String,
+                  default: "img_default.png"
+              },
+             
+            
+          }
 
        ],
        categories: [
